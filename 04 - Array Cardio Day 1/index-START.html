@@ -126,13 +126,10 @@
       // 7. sort Exercise
       // Sort the people alphabetically by last name
       const sortPeople = people.sort((a, b) => {
-        if (a[2] > b[2]) {
-          return -1;
-        } else {
-          return 1;
-        }
+        const [afirst, alast] = a.split(", ");
+        const [bfirst, blast] = b.split(", ");
+        return afirst > bfirst ? 1 : -1;
       });
-
       console.log(sortPeople);
 
       // 8. Reduce Exercise
@@ -153,6 +150,17 @@
         "car",
         "truck"
       ];
+
+      const transportation = data.reduce((total, val) => {
+        if (!total[val]) {
+          total[val] = 0;
+        }
+
+        total[val]++;
+        return total;
+      }, {});
+
+      console.log(transportation);
     </script>
   </body>
 </html>
